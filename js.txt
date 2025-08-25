@@ -1,0 +1,35 @@
+// Coordenadas aproximadas de Cañete, Perú
+const map = L.map('map').setView([-13.0836, -76.3832], 13);
+
+// Cargar tiles de OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// Evento para agregar marcador contaminado
+map.on('click', function (e) {
+    const { lat, lng } = e.latlng;
+
+    // Crear marcador con botón para eliminar
+    const marker = L.marker([lat, lng]).addTo(map);
+
+    marker.bindPopup(`
+        <strong>Zona contaminada</strong><br>
+        Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)}<br><br>
+        <button onclick="removeMarker(${lat}, ${lng})">🗑️ Zona limpia (Eliminar)</button>
+    `).openPopup();
+
+    // Guardar la referencia al marcador
+    marker._latlngStr = `${lat.toFixed(5)},${lng.toFixed(5)}`;
+    window.markers = window.markers || {};
+    window.markers[marker._latlngStr] = marker;
+});
+
+// Función para eliminar marcador
+function removeMarker(lat, lng) {
+    const key = `${lat.toFixed(5)},${lng.toFixed(5)}`;
+    if (window.markers && window.markers[key]) {
+        map.removeLayer(window.markers[key]);
+        delete window.markers[key];
+    }
+}

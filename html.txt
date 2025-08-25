@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>VerdeLocaliza</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <h1>🌿 VerdeLocaliza</h1>
+        <p>Identifica y elimina puntos de contaminación en tu comunidad.</p>
+    </header>
+
+    <section class="mensaje-responsable">
+        <h2>⚠️ Uso Responsable</h2>
+        <p>Por favor, usa esta plataforma con responsabilidad. Marca solo lugares realmente contaminados y elimina los marcadores si la zona ha sido limpiada.</p>
+    </section>
+
+    <main>
+        <div id="map"></div>
+    </main>
+
+    <section class="mensaje-final">
+        <h2>💚 ¡Di NO a la contaminación!</h2>
+        <p>Pequeñas acciones generan grandes cambios. Juntos podemos proteger el medio ambiente.</p>
+    </section>
+
+    <footer>
+        <p>© 2025 VerdeLocaliza | Plataforma para un Perú más limpio</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
